@@ -1,0 +1,18 @@
+.form {
+    font-family: "Franklin Gothic Medium", "Trebuchet MS";
+    font-size: 12pt;
+}
+
+.formField, .formPrompt {
+    float: left;
+    padding: 8px;
+    margin: 1px;
+}
+
+#add_category_form { display: none; }
+#add_cat_form { padding-top: 20px; }
+.formPrompt {    clear: both; }
+.privateForm { background-color: #ffc2c2; }
+.publicForm { background-color: #b1ffcb; }
+.spacer { width: 150px; }.formField { width: 300px; }
+tr { display: table-row;}
