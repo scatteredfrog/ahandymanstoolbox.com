@@ -94,3 +94,20 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Junk')) {
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = '3legsramon';
+    $db['default']['database'] = 'db401201757';
+} else if (substr($_SERVER['HTTP_HOST'],0,5) === 'local' && stristr($_SERVER['DOCUMENT_ROOT'],'Projects')) {
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'sqflirzel';
+    $db['default']['database'] = 'db401201757';
+} else {
+    $db['default']['hostname'] = 'db401201757.db.1and1.com';
+    $db['default']['username'] = 'dbo401201757';
+    $db['default']['password'] = 'pphmdb42';
+    $db['default']['database'] = 'db401201757';
+}
