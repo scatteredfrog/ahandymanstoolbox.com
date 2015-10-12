@@ -2,25 +2,11 @@
     $this->load->helper('form');
     
     require_once('data/use_the_form_fields.php');
-    
-    $this->db->select('id,category');
-    $query = $this->db->get('lf_tool_form_category');
-    if (isset($_SESSION['category'])) {
-        unset($_SESSION['category']);
-    }
-    $x = 0;
-    foreach ($query->result() as $row) {
-        $_SESSION['category'][$x]['name'] = $row->category;
-        $_SESSION['category'][$x]['id'] = $row->id;
-        $x++;
-    }
 
-    $x=0;
     echo link_tag('stuff/css/use_the_form.css');
     echo "<script src='" . base_url('stuff/js/jquery-1.11.3.min.js') . "'></script>";
     echo "<script src='" . base_url('stuff/js/jquery.blockUI.js') . "'></script>";
     echo "<script src='" . base_url('stuff/js/use_the_form.js') . "'></script>";
-    echo "<script src='" . base_url('stuff/js/ajaxfileupload.js') . "'></script>";
     $form_attributes = array(
         'id' => 'tool_entry_form',
     );

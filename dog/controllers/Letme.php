@@ -8,6 +8,8 @@ class Letme extends CI_Controller {
     }
 
     public function usetheform() {
+        $this->load->model('Letme_model');
+        $this->Letme_model->loadCategories();
         $this->load->view('use_the_form');
     }
 
@@ -93,7 +95,7 @@ class Letme extends CI_Controller {
                     $toolToInsert['active'] = 1;
                 }
                 $this->load->model('Letme_model');
-                $result = $this->Letme_model->insertTool($toolToInsert);
+                $result = $this->Letme_model->insertTool('tool_db',$toolToInsert);
                 echo "Result: \n";
                 echo print_r($result,1);
             }
@@ -115,12 +117,11 @@ class Letme extends CI_Controller {
         if ($returnData['success']) {
             $this->load->model('letme_model');
             $insert_data = array('category' => $category);
-            if (!$this->letme_model->insertTool($insert_data)) {
+            if (!$this->letme_model->insertTool('lf_tool_form_category', $insert_data)) {
                 $returnData['success'] = false;
                 $returnData['error'] = 'There was a problem adding this to the database.';
             }
         }
-        error_log("Return data: " . print_r($returnData,1));
         echo json_encode($returnData);
     }
     

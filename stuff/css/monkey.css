@@ -1,0 +1,90 @@
+@font-face {
+    font-family: roman_antique;
+    src: url('/stuff/fonts/RomanAntique.ttf');
+}
+
+.item img { max-height: 400px; }
+.carousel-caption h3 { text-shadow: 2px 2px #000;}
+#category_row { display: none; }
+#used_tool_carousel { min-height: 400px; }
+
+#monkeywrench {
+    background: url('/stuff/images/monkeywrench.jpg') no-repeat;
+    height: 575px;
+    position: relative;
+    width: 424px;
+    float: left;
+    border-bottom-left-radius: 22px;
+    border-top-left-radius: 22px;
+}
+
+#monkeyright {
+    float: left;
+    background: url('/stuff/images/smearwood.jpg') no-repeat;
+    height: 575px;
+    width: 576px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+}
+
+.toolboxHeader {
+    font-family: roman_antique;
+    font-size: 70px;
+    text-shadow: 5px 5px #fff;
+}
+
+.toolboxSubhead {
+    font-family: roman_antique;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+#monkey_button_container {
+    font-family: roman_antique;
+    font-size: 25px;
+    color: #fff;
+    background-color: #000024;
+    width: 387px;
+    margin-top: 42px;
+    padding-bottom: 15px;
+    border-radius: 12px;
+}
+
+#monkey_button_container div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: #000034;
+}
+
+#monkey_button_container div:hover {
+    color: #F1C40F;
+    font-size: 26px;
+    height:46px;
+}
+
+.center-block {
+    display: table;
+    margin: 0 auto;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+  height:100%;
+  display:table;
+  width: 100%;
+  padding: 0;
+}
+ 
+.row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+ 
+.centering {
+  float:none;
+  margin:0 auto;
+}
+
