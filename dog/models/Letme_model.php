@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Letme_model extends CI_Model {
     
     public function insertTool($table, $tool_data) {
+
         $success = $this->db->insert($table, $tool_data);
         return $success;
     }

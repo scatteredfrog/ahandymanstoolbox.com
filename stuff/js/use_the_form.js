@@ -27,3 +27,12 @@ function submitCategory() {
         }, 'json');
     }
 }
+
+function addMorePictures() {
+    if (pixCount === 19) {
+        alert("Cannot add more pictures");
+    } else {
+        pixCount++;
+        $('#more_pix'+pixCount).removeClass('morePix');
+    }
+}

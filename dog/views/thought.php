@@ -1,6 +1,12 @@
-<?= link_tag('stuff/css/monkey.css'); ?>
-<?= "<script src='" . base_url('stuff/js/jquery-1.11.3.min.js') . "'></script>"; ?>
-<?= "<script src='" . base_url('stuff/js/bootstrap.min.js') . "'></script>"; ?>
+<?php
+    echo link_tag('stuff/css/monkey.css');
+    echo "<script src='" . base_url('stuff/js/jquery-1.11.3.min.js') . "'></script>";
+    echo "<script src='" . base_url('stuff/js/bootstrap.min.js') . "'></script>";
+    $this->load->helper('cookie');
+    if (get_cookie('hmoreo',TRUE) === 'flirzelkwerp') {
+        echo "<script src='" . base_url('stuff/js/handyoreo.js') . "'></script>";
+    }
+?>
 <div class="container-fluid">
     <div class="row-fluid">
         <div id='main_box' class="center-block">

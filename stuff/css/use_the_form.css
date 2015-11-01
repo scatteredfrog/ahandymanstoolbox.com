@@ -8,7 +8,7 @@
     padding: 8px;
     margin: 1px;
 }
-
+.yearField { width: 110px; }
 #add_category_form { display: none; }
 #add_cat_form { padding-top: 20px; }
 .formPrompt {    clear: both; }
@@ -16,3 +16,4 @@
 .publicForm { background-color: #b1ffcb; }
 .spacer { width: 150px; }.formField { width: 300px; }
 tr { display: table-row;}
+.morePix { display: none; }
