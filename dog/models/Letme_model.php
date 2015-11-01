@@ -25,4 +25,17 @@ class Letme_model extends CI_Model {
       $x=0;
     }
     
+    public function quickieToolReport() {
+        $this->load->library('table');
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="4" cellspacing="0">',
+        );
+        $this->table->set_template($template);
+        $this->db->select('name,stock,purchase_price,public_notes,public_misc,picture_filename');
+        $this->db->from('tool_db');
+        $query = $this->db->get();
+        $tool = $this->table->generate($query);
+        return $tool;
+    }
+    
 }

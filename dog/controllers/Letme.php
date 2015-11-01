@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Letme extends CI_Controller {
 
     public function index() {
-        $this->load->view('welcome_message');
+        $this->load->view('hair');
+        $this->load->view('letmedostuff');
+        $this->load->view('sole');
     }
 
     public function usetheform() {
@@ -13,6 +15,11 @@ class Letme extends CI_Controller {
         $this->load->view('use_the_form');
     }
 
+    public function seethetools() {
+        $this->load->model('Letme_model');
+        $data['tools'] = $this->Letme_model->quickieToolReport();
+        $this->load->view('seethetools', $data);
+    }
     public function uploadapicture() {
         $status = '';
         $msg = '';
