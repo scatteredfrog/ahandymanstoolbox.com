@@ -196,7 +196,7 @@
     <!--    Notes for Sean -->
     <tr class="publicForm">
         <td class="formPrompt">Notes for Sean:</td>
-        <td><?= form_textarea($notes_for_sean) ?></td>
+        <td><?= form_textarea($notes_for_sean) ?><?= form_input($entered_this_year) ?></td>
     </tr>
 <!--    Submit Button-->
     <tr class="pForm">

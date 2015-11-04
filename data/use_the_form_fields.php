@@ -2,7 +2,12 @@
 
     $stock = array(
         'name' => 'stock', 'id' => 'stock',
-        'type' => 'text'
+        'type' => 'text', 'value' => '0' . ++$entered_this_year . $stock_suffix
+    );
+    
+    $entered_this_year = array(
+        'name' => 'entered_this_year', 'id' => 'entered_this_year',
+        'type' => 'hidden', 'value' => $entered_this_year
     );
     
     $addMorePix = array(

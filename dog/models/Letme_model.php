@@ -38,4 +38,11 @@ class Letme_model extends CI_Model {
         return $tool;
     }
     
+    public function rowsThisYear() {
+        $this_year = date('Y');
+        $sql = 'SELECT id FROM tool_db WHERE year_entered=' . $this_year;
+        $query = $this->db->query($sql);
+        return $query->num_rows();
+    }
+    
 }

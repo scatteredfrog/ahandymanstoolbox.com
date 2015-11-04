@@ -12,7 +12,9 @@ class Letme extends CI_Controller {
     public function usetheform() {
         $this->load->model('Letme_model');
         $this->Letme_model->loadCategories();
-        $this->load->view('use_the_form');
+        $data['entered_this_year'] = $this->Letme_model->rowsThisYear();
+        $data['stock_suffix'] = date('y') % 10;
+        $this->load->view('use_the_form',$data);
     }
 
     public function seethetools() {
@@ -20,6 +22,7 @@ class Letme extends CI_Controller {
         $data['tools'] = $this->Letme_model->quickieToolReport();
         $this->load->view('seethetools', $data);
     }
+    
     public function uploadapicture() {
         $status = '';
         $msg = '';
@@ -82,7 +85,9 @@ class Letme extends CI_Controller {
                     'sold_to_phone' => $this->input->post('sold_to_phone'),
                     'sold_to_email' => $this->input->post('sold_to_email'),
                     'private_notes' => $this->input->post('private_notes'),
-                    'private_misc' => $this->input->post('private_notes')
+                    'private_misc' => $this->input->post('private_notes'),
+                    'entered_this_year' => $this->input->post('entered_this_year'),
+                    'year_entered' => date('Y')
                  );
 
                 if (isset($_FILES['thumbnail']['name'])) {
@@ -205,7 +210,7 @@ class Letme extends CI_Controller {
                     'price_tag' => $this->input->post('price_tag'),
                     'item_details' => $this->input->post('item_details'),
                     'sale_price' => $this->input->post('sale_price'),
-                    'date_sold' => $this->input->post('sold_date_month') . '/' . $this->input->post('date_sold') . '/' . 'sold_date_year',
+                    'date_sold' => $this->input->post('sold_date_month') . '/' . $this->input->post('date_sold') . '/' . $this->input->post('sold_date_year'),
                     'sold_by' => $this->input->post('sold_by'),
                     'sold_to_name' => $this->input->post('sold_to_name'),
                     'sold_to_phone' => $this->input->post('sold_to_phone'),
@@ -217,7 +222,9 @@ class Letme extends CI_Controller {
                     'private_notes' => $this->input->post('private_notes'),
                     'private_misc' => $this->input->post('private_notes'),
                     'action_needed' => $this->input->post('action_needed'),
-                    'notes_for_sean' => $this->input->post('notes_for_sean')
+                    'notes_for_sean' => $this->input->post('notes_for_sean'),
+                    'year_entered' => date('Y'),
+                    'entered_this_year' => $this->input->post('entered_this_year')
                 );
 
                 for ($x = 1; $x < 20; $x++) {
