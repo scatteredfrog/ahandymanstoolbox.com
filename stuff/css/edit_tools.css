@@ -1,0 +1,134 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.inactiveTool {
+    background-color: #afffaf;
+    text-shadow: 1px 1px #fff;
+    clear: both;
+    float: left;
+}
+
+.buttonColumn { float: left; }
+
+.commonButton {
+    width: 125px!important;    
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 9px;
+    box-shadow: 2px 2px 2px 2px #aaa;
+    cursor: pointer;
+}
+
+.editButton {
+    text-shadow: 1px 1px #fff;
+    background-color: #00bfff;
+}
+
+.showPubButton {
+    text-shadow: 1px 1px #fff;
+    background-color: #5bc0de;
+    float: left;
+    margin-left: 15px;
+}
+
+.showPrivButton {
+    text-shadow: 1px 1px #fff;
+    background-color: #f9db93;
+    float: left;
+    margin-left: 15px;
+}
+
+.saveButton {
+    background-color: #bce8f1;
+    float: left;
+    margin-left: 15px;
+}
+
+.closeButton {
+    text-shadow: 1px 1px #fff;
+    background-color: #ffbfff;
+    float: left;
+    position: relative;
+    margin-left: 15px;
+}
+
+.deleteButton {
+    background-color: #f00;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
+.activeTool {
+    background-color: #ffa2a2;
+    text-shadow: 1px 1px #fff;
+    clear: both;
+    float: left;
+}
+
+.button {
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
+.toolRow {
+    position: relative;
+    float: left;
+    border-bottom-color: #000;
+    border-bottom-width: 2px;
+    border-bottom-style: groove;
+    padding-bottom: 5px;
+    padding-top: 12px;
+    clear: both;
+}
+
+.toolName {
+    position: relative;
+    left: 9px;
+    background-color: #f9db93;
+    height: 111px;
+    width: 250px;
+    float: left;
+    padding: 5px;
+}
+
+.publicNotes {
+    position: relative;
+    left: 9px;
+    background-color: #98dbcc;
+    height: 111px;
+    width: 500px;
+    float: left;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#edit_id { display: none; }
+
+.field { padding: 5px; left: 12px; }
+.fieldData { padding: 5px; }
+
+#edit_form {
+    background-color: #fff;
+}
+
+.datepick-popup-ed {
+    position: relative;
+    left: -162px!important;
+    top: 370px!important;
+    z-index: 4000;
+    background-color: #aeaeae;
+}
+
+.isBottom { 
+    position: relative; 
+    top: 12px;
+    padding-bottom: 7px;
+}
+
+.publicData { background-color: #ffc2c2; }
+.privateData { background-color: #b1ffcb; }
+#edit_sold_date, #edit_purchase_day { width: 50px; }

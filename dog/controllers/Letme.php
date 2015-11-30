@@ -161,6 +161,15 @@ class Letme extends CI_Controller {
                     if (file_exists($image_path)) {
                         $status = 'success';
                         $msg = 'Main picture "' . $_FILES[$file_element_name]['name'] . '" successfully uploaded';
+                        list($width, $height, $type, $attr) = getimagesize($image_path);
+                        if ($height > 400) {
+                            echo '<br />Resizing image...<br />';
+                            $resized_file_name = $this->resize_image($image_path);
+                            if ($resized_file_name) {
+                                echo 'Image path: ' . $image_path;
+                            }
+                        }
+                        $first_picture = $resized_file_name ? $resized_file_name : $_FILES['picture']['name'];
                     } else {
                         $status = 'error';
                         $msg = 'There was a problem saving the main picture.';
@@ -199,7 +208,7 @@ class Letme extends CI_Controller {
                 $button_pressed['submit_add'] = $this->input->post('submit_add');
                 $toolToInsert = array(
                     'stock' => $this->input->post('stock'),
-                    'picture_filename' => $_FILES['picture']['name'],
+                    'picture_filename' => $first_picture,
                     'name' => $this->input->post('name'),
                     'craigslist_title' => $this->input->post('cl_title'),
                     'ebay_title' => $this->input->post('ebay_title'),
@@ -329,5 +338,28 @@ class Letme extends CI_Controller {
         $edit_data['action_needed'] = $this->input->post('action_needed');
         $edit_data['notes_for_sean'] = $this->input->post('notes_for_sean');
         return $this->Letme_model->editTool($edit_data);
+    }
+    
+    public function do_resize() {
+        $this->resize_image('stuff/images/tool_photos/IMG_3039.JPG');
+    }
+    
+    public function resize_image($source_image) {
+        $config['image_library'] = 'gd2';
+        $config['height'] = 400;
+        $config['source_image'] = $source_image;
+        $image_parts = explode('.', $source_image);
+        $ext_pos = strrpos($source_image, '.');
+        $config['new_image'] = substr($source_image, 0, $ext_pos) . '_resized' . substr($source_image, $ext_pos);
+        $this->load->library('image_lib', $config);
+        $slash_pos = strrpos($config['new_image'], '/') + 1;
+        $new_filename = substr($config['new_image'], $slash_pos);
+        echo "New image: " . $config['new_image'] . '<br />';
+        echo 'New filename: ' . $new_filename . '<br />';
+        if ($this->image_lib->resize()) {
+            return $new_filename;
+        } else {
+            return false;
+        }
     }
 }
