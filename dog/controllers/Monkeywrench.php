@@ -17,12 +17,17 @@ class Monkeywrench extends CI_Controller {
         $this->load->view('sole');
     }
     
+    // Categories can be added dynamically. To facilitate this,
+    // the database table has one single field for category. Categories
+    // are stored in the field as a comma-delimited string. This 
+    // method takes that string and separates the categories for 
+    // display on the photo carousel.
     public function parseCategory() {
         $categories = explode(',' , $this->input->post('category'));
 
         // Load the categories into the session
         $this->load->model('Letme_model');
-        $this->Letme_model->loadCategories();
+        $this->Letme_model->loadCategories(); // get the names and IDs of the categories
 
         $category = '';
         

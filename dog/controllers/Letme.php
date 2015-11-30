@@ -20,7 +20,9 @@ class Letme extends CI_Controller {
     public function seethetools() {
         $this->load->model('Letme_model');
         $data['tools'] = $this->Letme_model->quickieToolReport();
+        $this->load->view('zenith');
         $this->load->view('seethetools', $data);
+        $this->load->view('nadir');
     }
     
     public function uploadapicture() {
@@ -265,5 +267,67 @@ class Letme extends CI_Controller {
 
         }
         echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
+    
+    public function edit_tools() {
+        $this->load->model('Letme_model');
+        $this->Letme_model->loadCategories();
+        $this->load->library('tool');
+        $data['tools'] = $this->Letme_model->getTools();
+        $this->load->view('edit_tools',$data);
+    }
+    
+    public function toggleActiveTool() {
+        $tool_id = $this->input->post('tool_id');
+        $this->load->model('Letme_model');
+        $updateIt = $this->Letme_model->toggleActive($tool_id);
+        if ($updateIt) {
+            echo "success";
+        } else {
+            echo "fail";
+        }
+    }
+    
+    public function deleteTool() {
+        $tool_id = $this->input->post('tool_id');
+        $this->load->model('Letme_model');
+        if ($this->Letme_model->deleteTool($tool_id)) {
+            echo "success";
+        } else {
+            echo "fail";
+        }
+    }
+    
+    public function editTool() {
+        $this->load->model('Letme_model');
+        $edit_data['id'] = $this->input->post('id');
+        $edit_data['name'] = $this->input->post('name');
+        $edit_data['stock'] = $this->input->post('stock');
+        $edit_data['category'] = $this->input->post('category');
+        $edit_data['craigslist_title'] = $this->input->post('craigslist_title');
+        $edit_data['ebay_title'] = $this->input->post('ebay_title');
+        $edit_data['purchase_date'] = $this->input->post('purchase_date');
+        $edit_data['purchase_price'] = $this->input->post('purchase_price');
+        $edit_data['buyers_premium'] = $this->input->post('buyers_premium');
+        $edit_data['purchased_from'] = $this->input->post('purchased_from');
+        $edit_data['display_info'] = $this->input->post('display_info');
+        $edit_data['price_tag'] = $this->input->post('price_tag');
+        $edit_data['public_notes'] = $this->input->post('public_notes');
+        $edit_data['public_misc'] = $this->input->post('public_misc');
+        $edit_data['sale_price'] = $this->input->post('sale_price');
+        $edit_data['date_sold'] = $this->input->post('date_sold');
+        $edit_data['sold_to_name'] = $this->input->post('sold_to_name');
+        $edit_data['sold_to_phone'] = $this->input->post('sold_to_phone');
+        $edit_data['sold_to_email'] = $this->input->post('sold_to_email');
+        $edit_data['sold_by'] = $this->input->post('sold_by');
+        $edit_data['commission'] = $this->input->post('commission');
+        $edit_data['shipping'] = $this->input->post('shipping');
+        $edit_data['other_costs'] = $this->input->post('other_costs');
+        $edit_data['profit_loss'] = $this->input->post('profit_loss');
+        $edit_data['private_notes'] = $this->input->post('private_notes');
+        $edit_data['private_misc'] = $this->input->post('private_misc');
+        $edit_data['action_needed'] = $this->input->post('action_needed');
+        $edit_data['notes_for_sean'] = $this->input->post('notes_for_sean');
+        return $this->Letme_model->editTool($edit_data);
     }
 }
